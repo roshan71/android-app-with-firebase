@@ -28,6 +28,7 @@
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
+                android:singleLine="true"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/edittext_bkg"
                 android:drawableLeft="@drawable/ic_baseline_email_24"

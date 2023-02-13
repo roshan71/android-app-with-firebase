@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Help">
+
+    <!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true"-->
+
+<!--        android:text="This app allows you to create, edit, and manage your daily tasks and to-dos. In this page, you will find information about how to use the app effectively."-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="15dp" />-->
+
+
+
+    <TextView
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_navigator"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="-20dp"
+        android:layout_marginEnd="286dp"
+        android:layout_marginBottom="533dp"
+        android:text="Add Task:"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_navigator"
+
+
+        android:layout_marginTop="374dp"
+        android:layout_marginBottom="590dp"
+        android:text="This app allows you to create, edit, and manage your daily tasks and to-dos. In this page, you will find information about how to use the app effectively."
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_above="@+id/bottom_navigator"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="137dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginEnd="155dp"
+        android:layout_marginBottom="680dp"
+        android:text="Help"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_navigator"
+        android:layout_marginStart="6dp"
+
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="464dp"
+        android:text="To add a new task, click on the Add Task button. A form will appear where you can enter the task title, description, and the Add button."
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <TextView
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_navigator"
+
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="-79dp"
+        android:layout_marginEnd="297dp"
+        android:layout_marginBottom="415dp"
+        android:text="Edit Task:"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+
+        android:layout_width="393dp"
+        android:layout_height="51dp"
+
+
+        android:layout_above="@+id/bottom_navigator"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="153dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="352dp"
+        android:text="To edit a task, click on the Edit button in the task card. The add task form will appear with the task details pre-filled. You can make changes and save them. "
+        android:textColor="@color/black" />
+
+    <TextView
+        android:layout_width="118dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_navigator"
+
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="-84dp"
+        android:layout_marginEnd="289dp"
+        android:layout_marginBottom="313dp"
+        android:text="Delete Task:"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+
+        android:layout_width="393dp"
+        android:layout_height="51dp"
+
+
+        android:layout_above="@+id/bottom_navigator"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="-51dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="259dp"
+        android:text="To delete a task, click on the Delete button in the task card. The task will be removed from the list."
+        android:textColor="@color/black" />
+
+    <TextView
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_navigator"
+
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="-84dp"
+        android:layout_marginEnd="293dp"
+        android:layout_marginBottom="233dp"
+        android:text="View Task:"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+
+        android:layout_width="393dp"
+        android:layout_height="51dp"
+
+
+        android:layout_above="@+id/bottom_navigator"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="-85dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="167dp"
+        android:text="All the tasks that you have added will be displayed in a list view. You can view the details of each task by clicking on the task card."
+        android:textColor="@color/black" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_navigator"
+
+
+        android:layout_marginTop="-423dp"
+        android:layout_marginBottom="68dp"
+        android:text="If you have any questions or concerns about the app, please feel free to contact us. We will be happy to help!"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_navigator"
+        app:itemBackground="@color/white"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/menu"
+        android:layout_alignParentBottom="true"
+        />
+
+
+</RelativeLayout>

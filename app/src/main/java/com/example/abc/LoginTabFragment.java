@@ -1,6 +1,9 @@
 package com.example.abc;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -22,6 +25,7 @@ public class LoginTabFragment extends Fragment {
     public static boolean isValidEmail(CharSequence target) {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
+    // Storing data into SharedPreferences
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,6 +37,7 @@ public class LoginTabFragment extends Fragment {
           EditText login_email=(EditText) view.findViewById(R.id.login_email);
           EditText login_password=(EditText) view.findViewById(R.id.login_password);
 
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MySharedPref",MODE_PRIVATE);
 
           login_button.setOnClickListener(new View.OnClickListener() {
 
@@ -44,12 +49,20 @@ public class LoginTabFragment extends Fragment {
                 if(!Email.equals("") && !Password.equals("")) {
 
                     if (isValidEmail(Email)) {
-                        boolean res = db.validateUser(Email,Password);
-                        if(res){
+                        String res = db.validateUser(Email,Password);
+                        if(res!=null){
                             login_email.setText("");
                             login_password.setText("");
+                            // Creating an Editor object to edit(write to the file)
+                            SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                            myEdit.putString("userId",res);
+                            myEdit.commit();
                             Intent intent = new Intent(getActivity(), MainActivity2.class);
                             startActivity(intent);
+
+
+
+
                             Toast.makeText(getActivity(), "Login Successfully", Toast.LENGTH_SHORT).show();
                         }
                         else{
