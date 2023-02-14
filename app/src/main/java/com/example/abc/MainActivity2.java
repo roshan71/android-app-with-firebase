@@ -71,21 +71,17 @@ public class MainActivity2 extends AppCompatActivity implements TodoAdapter.OnTo
     @Override
     public void onDeleteClick(HashMap<String, String> todoMap) {
         int index = todoList.indexOf(todoMap);
-
-        // Remove the Todo task from the list
         todoList.remove(index);
-
-        // Notify the adapter that the data has changed
         todoAdapter.notifyItemRemoved(index);
         System.out.println("todoMap123");
         DBManager db =new DBManager(this);
-        // Also, delete the Todo task from the SQLite database
+
         db.deleteTask(todoMap.get("id"));
         System.out.println("idvisdivbsdivbiosdviodgbhdiofviodfhngr");
-        // delete the Todo task from the SQLite database
+
 //       deleteTodoFromSQLite(todoMap);
 ////
-//        // update the list in the adapter
+//
         todoList.remove(todoMap);
         todoAdapter.notifyDataSetChanged();
     }
@@ -93,7 +89,7 @@ public class MainActivity2 extends AppCompatActivity implements TodoAdapter.OnTo
     @Override
     public void onEditClick(HashMap<String, String> todoMap) {
         System.out.println("audsgicufgdsiuvguidsv");
-        // show the add task form with the data to edit
+
 //        showAddTaskForm(todoMap);
     }
 
@@ -107,22 +103,18 @@ public class MainActivity2 extends AppCompatActivity implements TodoAdapter.OnTo
 
 
     private void deleteTodoFromSQLite(HashMap<String, String> todoMap) {
-        // First, get the index of the Todo task to be deleted
-        int index = todoList.indexOf(todoMap);
 
-        // Remove the Todo task from the list
+        int index = todoList.indexOf(todoMap);
         todoList.remove(index);
 
-        // Notify the adapter that the data has changed
         todoAdapter.notifyItemRemoved(index);
         DBManager db =new DBManager(this);
-        // Also, delete the Todo task from the SQLite database
         db.deleteTask(todoMap.get("id"));
         System.out.println("idvisdivbsdivbiosdviodgbhdiofviodfhngr");
     }
 
-    // method to show the add task form with the data to edit
+
     private void showAddTaskForm(HashMap<String, String> todoMap) {
-        // implement the code to show the add task form
+
     }
 }
