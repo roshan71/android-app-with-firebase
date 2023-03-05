@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="300dp"-->
+<!--    android:layout_height="500dp"-->
+<!--    android:layout_margin="16dp"-->
+<!--    android:orientation="vertical">-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/edit_amount"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Amount" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/edit_description"-->
+<!--        android:layout_width="match_parent"-->
+<!--        -->
+<!--        android:layout_height="2"-->
+<!--        android:hint="Description" />-->
+<!--    <Button-->
+<!--        android:id="@+id/button_save"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Save" />-->
+<!--    <Button-->
+<!--        android:id="@+id/button_cancel"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Cancel" />-->
+
+<!--</LinearLayout>-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="300dp"
+android:layout_height="500dp"
+android:layout_margin="16dp"
+android:orientation="vertical">
+
+<TextView
+    android:id="@+id/task_description_text_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:textStyle="bold"
+    android:textColor="@color/lavender"
+    android:singleLine="true"
+
+    android:textSize="25dp"
+    android:text="Title" />
+
+<EditText
+    android:id="@+id/edit_amount"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:background="@drawable/box_text"
+
+    android:gravity="top|left"
+    android:hint="Title"
+    android:inputType="number"
+    android:textColorHint="#837E7E"
+    android:textColor="@color/black"
+    android:lines="6"
+    android:overScrollMode="always"
+
+    android:padding="10dp"
+    android:scrollbarStyle="insideInset"
+    android:scrollbars="vertical"
+    android:scrollHorizontally="false"
+    android:textAlignment="gravity"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/task_title_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/lavender"
+        android:textSize="25dp"
+        android:text="Description" />
+
+    <EditText
+        android:id="@+id/edit_description"
+        android:layout_width="match_parent"
+        android:layout_height="113dp"
+        android:layout_marginTop="5dp"
+        android:inputType="textMultiLine"
+        android:textSize="20dp"
+        android:textColorHint="#837E7E"
+        android:textColor="@color/black"
+        android:background="@drawable/box_text"
+        android:hint="Enter Description"
+        android:paddingStart="10dp" />
+<!--    <EditText-->
+<!--        android:id="@+id/edit_description"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:background="@drawable/edittextborder"-->
+<!--        android:gravity="top|left"-->
+<!--        android:inputType="textMultiLine"-->
+<!--        android:padding="10dp"-->
+<!--        android:overScrollMode="always"-->
+<!--        android:scrollbarStyle="insideInset"-->
+<!--        android:scrollbars="vertical"-->
+<!--        android:lines="6"-->
+<!--        android:textAppearance="?android:attr/textAppearanceMedium"-->
+<!--        android:scrollHorizontally="false" />-->
+
+
+    <Button
+    android:id="@+id/button_save"
+    android:layout_width="match_parent"
+    android:layout_height="59dp"
+    android:textColor="@color/white"
+    android:layout_marginTop="15dp"
+    android:text="Update"
+
+        />
+
+    <Button
+        android:id="@+id/button_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="15dp"
+        android:text="cancel" />
+
+</LinearLayout>

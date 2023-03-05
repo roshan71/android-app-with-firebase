@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="5dp"
             android:paddingStart="10dp"
-            android:background="@drawable/edittextborder"
+            android:background="@drawable/box_text"
             android:layout_height="60dp" />
 
         <TextView
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="280dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/edittextborder"
+            android:background="@drawable/box_text"
             android:gravity="top|left"
             android:inputType="textMultiLine"
             android:padding="10dp"

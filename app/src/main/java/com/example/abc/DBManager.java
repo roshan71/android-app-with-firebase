@@ -138,7 +138,7 @@ public class DBManager extends SQLiteOpenHelper {
         return todoList;
     }
 
-    public boolean deleteTask(String task_id){
+    public boolean deleteTaskwithID(String task_id){
         SQLiteDatabase db = this.getWritableDatabase();
         String TABLE_NAME="Tasks";
         String COLUMN_NAME="task_id";
@@ -152,6 +152,22 @@ public class DBManager extends SQLiteOpenHelper {
         return true;
     }
 
+
+    public void deleteTask(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("Tasks", "id=?", new String[]{id});
+
+    }
+
+    public void editTask(String id,String title,String newDescription){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("task_id", String.valueOf(id));
+        values.put("title", title);
+        values.put("description", newDescription);
+        db.update("Tasks", values, "task_id = ?", new String[] { id });
+        db.close();
+    }
 
 
 
