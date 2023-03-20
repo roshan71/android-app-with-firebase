@@ -15,11 +15,15 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.HashMap;
 import java.util.List;
 public class TodoAdapter extends RecyclerView.Adapter<TodoViewHolder> {
     private DBManager dbHelper;
     private List<HashMap<String, String>> todoList;
+
 
     private MainActivity2 homePage;
     public Context context;
@@ -32,8 +36,13 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoViewHolder> {
     }
 
 
-
+    public void updateData(List<HashMap<String, String>> todoList) {
+        this.todoList = todoList;
+        notifyDataSetChanged();
+    }
     public void deleteItem(int position) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Tasks");
 
         AlertDialog.Builder builder=new AlertDialog.Builder(context);
         builder.setMessage("Are you Sure to delete? ")
@@ -41,11 +50,11 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoViewHolder> {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // get the id of the data at the position
-                        String id = todoList.get(position).get("id");
-
+                        String id = todoList.get(position).get("task_id");
+                        myRef.child(id).removeValue();
                         // delete the data from the database
-                        dbHelper.deleteTaskwithID(id);
-                        homePage.reload();
+//                        dbHelper.deleteTaskwithID(id);
+
                         // remove the data from the list
                         todoList.remove(position);
                         notifyItemRemoved(position);
@@ -75,6 +84,8 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoViewHolder> {
         // create the dialog
         final Dialog dialog = new Dialog(homePage);
         dialog.setContentView(R.layout.dialog_edit);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Tasks");
 
         // get the EditText views from the dialog
         final EditText amountEditText = dialog.findViewById(R.id.edit_amount);
@@ -90,23 +101,19 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoViewHolder> {
             @Override
             public void onClick(View v) {
                 // get the new values for amount and description
-                String title1 = amountEditText.getText().toString();
+                String newTitle = amountEditText.getText().toString();
                 String newDescription = descriptionEditText.getText().toString();
 
-                dbHelper.editTask(data.get("id"),title1,newDescription);
-                // update the item in the database
-//                SQLiteDatabase db = dbHelper.getWritableDatabase();
-//                ContentValues values = new ContentValues();
-//                values.put("amount", newAmount);
-//                values.put("purpose", newDescription);
-//                db.update("billbook", values, "_id = ?", new String[] { money.get("id") });
-//                db.close();
+                // update the task in the Firebase Realtime Database
+                String id = data.get("task_id");
+                DatabaseReference taskRef = myRef.child(id);
+                taskRef.child("title").setValue(newTitle);
+                taskRef.child("desc").setValue(newDescription);
 
-                // update the data in the adapter and notify the RecyclerView
-                data.put("amount", title1);
-                data.put("purpose", newDescription);
+                data.put("title", newTitle);
+                data.put("description", newDescription);
                 notifyDataSetChanged();
-                homePage.reload();
+
                 dialog.dismiss();
             }
         });
@@ -171,9 +178,9 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoViewHolder> {
         // get the data from the position
         HashMap<String, String> data = todoList.get(position);
         System.out.println(data);
-        String id = data.get("id");
-        String amount = data.get("amount");
-        String description = data.get("purpose");
+        String id = data.get("task_id");
+        String title = data.get("title");
+        String description = data.get("description");
         openEditDialog(data);
 
 

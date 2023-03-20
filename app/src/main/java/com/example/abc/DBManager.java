@@ -9,6 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.*;
 
 public class DBManager extends SQLiteOpenHelper {
@@ -38,6 +41,9 @@ public class DBManager extends SQLiteOpenHelper {
         Long tsLong = System.currentTimeMillis()/1000;
         String ts = tsLong.toString();
         ContentValues cv=new ContentValues();
+
+
+
         cv.put("id",ts);
         cv.put("email",email);
         cv.put("password",password);
