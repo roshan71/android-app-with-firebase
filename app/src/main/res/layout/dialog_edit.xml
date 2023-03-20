@@ -57,7 +57,7 @@ android:orientation="vertical">
 
     android:gravity="top|left"
     android:hint="Title"
-    android:inputType="number"
+    android:inputType="text"
     android:textColorHint="#837E7E"
     android:textColor="@color/black"
     android:lines="6"

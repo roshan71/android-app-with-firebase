@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
@@ -18,7 +19,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class LoginTabFragment extends Fragment {
@@ -27,11 +32,15 @@ public class LoginTabFragment extends Fragment {
     }
     // Storing data into SharedPreferences
 
+    private FirebaseAuth mAuth;
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
+            mAuth=FirebaseAuth.getInstance();
             View view = inflater.inflate(R.layout.fragment_login_tab, container, false);
           Button login_button=(Button) view.findViewById(R.id.login_button);
           EditText login_email=(EditText) view.findViewById(R.id.login_email);
@@ -47,6 +56,25 @@ public class LoginTabFragment extends Fragment {
                 String Email=login_email.getText().toString();
                 String Password=login_password.getText().toString();
                 if(!Email.equals("") && !Password.equals("")) {
+                    System.out.println(Email);
+                    System.out.println(Password);
+                    mAuth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                FirebaseUser currentUser = mAuth.getCurrentUser();
+                                String userId = currentUser.getUid();
+                                System.out.println(userId);
+                                SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                                myEdit.putString("userId",userId);
+                                myEdit.commit();
+                                Toast.makeText(getActivity(), "Login Successfully", Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                Toast.makeText(getActivity(), "Not Successfully", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
 
                     if (isValidEmail(Email)) {
                         String res = db.validateUser(Email,Password);
@@ -54,9 +82,9 @@ public class LoginTabFragment extends Fragment {
                             login_email.setText("");
                             login_password.setText("");
                             // Creating an Editor object to edit(write to the file)
-                            SharedPreferences.Editor myEdit = sharedPreferences.edit();
-                            myEdit.putString("userId",res);
-                            myEdit.commit();
+//                            SharedPreferences.Editor myEdit = sharedPreferences.edit();
+//                            myEdit.putString("userId",res);
+//                            myEdit.commit();
                             Intent intent = new Intent(getActivity(), MainActivity2.class);
                             startActivity(intent);
 
@@ -80,6 +108,21 @@ public class LoginTabFragment extends Fragment {
           });
 
         return view;
+
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Toast.makeText(getContext(), "Not User get Successfully", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+
+
 
 }
